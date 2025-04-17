@@ -30,7 +30,7 @@ public class AuthService {
             throw new InvalidRequestException("이미 존재하는 이메일입니다."); // 기존에 비밀번호 인코딩을 먼저하던것을 이메일 중복여부를 먼저 확인
         }
 
-        String encodedPassword = passwordEncoder.encode(signupRequest.getPassword()); // 이메일 중복이 아니면 그때 비밀번호 인코딩을 시작 aa
+        String encodedPassword = passwordEncoder.encode(signupRequest.getPassword()); // 이메일 중복이 아니면 그때 비밀번호 인코딩을 시작
         UserRole userRole = UserRole.of(signupRequest.getUserRole());
 
         User newUser = new User(
