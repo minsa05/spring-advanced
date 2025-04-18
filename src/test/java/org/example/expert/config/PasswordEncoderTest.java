@@ -20,7 +20,7 @@ class PasswordEncoderTest {
         String encodedPassword = passwordEncoder.encode(rawPassword);
 
         // when
-        boolean matches = passwordEncoder.matches(encodedPassword, rawPassword);
+        boolean matches = passwordEncoder.matches(rawPassword,encodedPassword); // encodedPassword를 뒤로보냈더니 성공함 이유는 원래 비밀번호를 비교하고 암호화해야하는데 암호화를 먼저해버리면 비교를 못함
 
         // then
         assertTrue(matches);
