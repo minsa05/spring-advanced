@@ -35,7 +35,7 @@ public class ManagerService {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
 
-        if (!ObjectUtils.nullSafeEquals(user.getId(), todo.getUser().getId())) {
+        if (todo.getUser() == null ||!ObjectUtils.nullSafeEquals(user.getId(), todo.getUser().getId())) { // todo의 user가 null일때 이 메시지가 나와야 하니까 null 조건을 추가함
             throw new InvalidRequestException("담당자를 등록하려고 하는 유저가 일정을 만든 유저가 유효하지 않습니다.");
         }
 
